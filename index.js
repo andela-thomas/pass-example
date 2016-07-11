@@ -15,7 +15,7 @@
   });
 
 
-  app.listen(3000, (err) => {
+  app.listen(process.env.PORT || 3000, (err) => {
     if (!err) {
       return console.log('serve running on port 3000');
     }
