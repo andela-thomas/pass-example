@@ -10,7 +10,7 @@
   app.use(express.static('./public'));
 
 
-  app.get('/*', (req, res) => {
+  app.get('/*', function (req, res) {
     res.sendFile('index.html', {
       root: './public'
     });
@@ -24,7 +24,7 @@
     });
   });
 
-  app.listen(process.env.PORT || 3000, (err) => {
+  app.listen(process.env.PORT || 3000, function (err) {
     if (!err) {
       return console.log('serve running on port 3000');
     }
