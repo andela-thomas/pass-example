@@ -7,12 +7,12 @@
   var cron = require('node-cron');
   var request = require('request');
 
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static('./public'));
 
 
   app.get('/*', (req, res) => {
     res.sendFile('index.html', {
-      root: '/public'
+      root: './public'
     });
   });
 
