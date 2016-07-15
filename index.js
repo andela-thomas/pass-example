@@ -4,8 +4,8 @@
   require('newrelic');
   var express = require('express');
   var app = express();
-  var cron = require('node-cron');
-  var request = require('request');
+  var cronjob = require('node-cron-job');
+
 
   app.use(express.static('./public'));
 
@@ -16,14 +16,12 @@
     });
   });
 
-  cron.schedule('* * * * *', function () {
-    request('https://paas-xmpl.herokuapp.com', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('this is a cron request');
-      }
-    });
-  });
 
+
+
+  cronjob.setJobsPath(__dirname + '/jobs.js'); // Absolute path to the jobs module.
+
+  cronjob.startJob('first_job');
   app.listen(process.env.PORT || 3000, function (err) {
     if (!err) {
       return console.log('serve running on port 3000');
