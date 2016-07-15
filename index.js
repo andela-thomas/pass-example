@@ -4,7 +4,8 @@
   require('newrelic');
   const express = require('express');
   const app = express();
-
+  var cron = require('node-cron');
+  var request = require('request');
 
   app.use(express.static(__dirname + '/public'));
 
@@ -15,6 +16,13 @@
     });
   });
 
+  cron.schedule('* * * * *', function () {
+    request('https://paas-xmpl.herokuapp.com', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('this is a cron request');
+      }
+    });
+  });
 
   app.listen(process.env.PORT || 3000, (err) => {
     if (!err) {

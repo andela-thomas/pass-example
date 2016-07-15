@@ -9,7 +9,10 @@
   "author": "Nyambati Thomas <thomas.nyambati@andela.com>",
   "license": "ISC",
   "dependencies": {
+    "curl": "^0.1.4",
     "express": "^4.14.0",
-    "newrelic": "^1.28.3"
+    "newrelic": "^1.28.3",
+    "node-cron": "^1.1.1",
+    "request": "^2.73.0"
   }
 }
